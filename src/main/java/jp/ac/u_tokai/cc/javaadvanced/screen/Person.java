@@ -1,9 +1,21 @@
 package jp.ac.u_tokai.cc.javaadvanced.screen;
 
+import java.io.Serializable;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+
 /**
  * 人の情報
  */
-public class Person {
+@Entity
+public class Person implements Serializable {
+    @Id
+    @SequenceGenerator(name = "addressGenerator", sequenceName = "addressSequence")
+    @GeneratedValue(generator = "addressGenerator")
+    private Long id;
     private String name;
     /**
      * 氏名を取得する
